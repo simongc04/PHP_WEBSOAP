@@ -3,7 +3,7 @@ require_once 'config.php';
 
 class AuthMiddleware {
 
-    // Método para verificar el token de autenticación
+    
     public static function verifyToken($token) {
         if (empty($token)) {
             return ['codigo' => 2, 'mensaje' => 'Error en parámetro: Token no proporcionado.'];

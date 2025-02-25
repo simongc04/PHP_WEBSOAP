@@ -2,7 +2,7 @@
 require_once 'centroService.php';
 
 $options = [
-    'uri' => 'http://localhost/soap-moodle-sepe/server/server.php',
+    'uri' => 'http://localhost/PHP_WEBSOAP/server/server.php',
     'soap_version' => SOAP_1_2,
     'trace' => true
 ];

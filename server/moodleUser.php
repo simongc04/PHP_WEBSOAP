@@ -33,7 +33,7 @@ class MoodleClient {
         if (isset($data['exception'])) {
             return ['codigo' => -1, 'mensaje' => 'Error inesperado: ' . $data['message']];
         }
-
+        print($data['message']);
         return $data;
     }
 

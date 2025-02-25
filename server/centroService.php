@@ -16,6 +16,12 @@ class CentroService {
         $codigoCentro = $request->CODIGO_CENTRO;
 
         try {
+
+            $authResponse = AuthMiddleware::verifyToken($request->token);
+            if ($authResponse !== true) {
+                return $authResponse;
+            }
+
             // Validación de parámetros
             if (empty($request->ID_CENTRO) || empty($request->NOMBRE_CENTRO)) {
                 return $this->response(2, "Error en parámetro: ID_CENTRO y NOMBRE_CENTRO son obligatorios.");

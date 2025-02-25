@@ -1,13 +1,5 @@
 # PHP_WEBSOAP
 ### Estructura inicial del proyecto
-soap-moodle-sepe/
-├── wsdl/
-│   └── centro.wsdl
-├── server/
-│   ├── config.php
-│   ├── CentroService.php
-│   └── server.php
-├── client/
-│   └── client.php
-└── logs/
-    └── soap.log
+
+![image](https://github.com/user-attachments/assets/c75c9fca-0ad9-4bc8-92a4-37686b5af8b7)
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CentroService"
+    targetNamespace="http://example.com/centro"
+    xmlns:tns="http://example.com/centro"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xsd:schema targetNamespace="http://example.com/centro">
+            <xsd:element name="crearCentroRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ID_CENTRO" type="xsd:string"/>
+                        <xsd:element name="NOMBRE_CENTRO" type="xsd:string"/>
+                        <xsd:element name="URL_PLATAFORMA" type="xsd:string"/>
+                        <xsd:element name="URL_SEGUIMIENTO" type="xsd:string"/>
+                        <xsd:element name="TELEFONO" type="xsd:string"/>
+                        <xsd:element name="EMAIL" type="xsd:string"/>
+                        <xsd:element name="ORIGEN_CENTRO" type="xsd:string"/>
+                        <xsd:element name="CODIGO_CENTRO" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="crearCentroResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="resultado" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="crearCentroRequest">
+        <part name="parameters" element="tns:crearCentroRequest"/>
+    </message>
+    <message name="crearCentroResponse">
+        <part name="parameters" element="tns:crearCentroResponse"/>
+    </message>
+
+    <portType name="CentroPortType">
+        <operation name="crearCentro">
+            <input message="tns:crearCentroRequest"/>
+            <output message="tns:crearCentroResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="CentroBinding" type="tns:CentroPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="crearCentro">
+            <soap:operation soapAction="crearCentro"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CentroService">
+        <port name="CentroPort" binding="tns:CentroBinding">
+            <soap:address location="http://localhost/soap-moodle-sepe/server/server.php"/>
+        </port>
+    </service>
+</definitions>

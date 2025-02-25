@@ -26,7 +26,8 @@
             <xsd:element name="crearCentroResponse">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="resultado" type="xsd:string"/>
+                        <xsd:element name="codigo" type="xsd:int"/>
+                        <xsd:element name="mensaje" type="xsd:string"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>

@@ -14,18 +14,48 @@ class CentroService {
         $origenCentro = $request->ORIGEN_CENTRO;
         $codigoCentro = $request->CODIGO_CENTRO;
 
-        // Validación simple
-        if (empty($idCentro) || empty($nombreCentro)) {
-            return ['resultado' => 'Error: ID_CENTRO y NOMBRE_CENTRO son obligatorios.'];
+        try {
+            // Validación de parámetros
+            if (empty($request->ID_CENTRO) || empty($request->NOMBRE_CENTRO)) {
+                return $this->response(2, "Error en parámetro: ID_CENTRO y NOMBRE_CENTRO son obligatorios.");
+            }
+
+        
+            $existe = $this->verificarExistencia($request->ID_CENTRO);
+
+            if ($existe) {
+                return $this->response(1, "Centro con acciones existentes.");
+            }
+
+            
+            $resultado = "Centro '{$request->NOMBRE_CENTRO}' creado exitosamente con ID: {$request->ID_CENTRO}";
+            
+            // Registro de log
+            $this->log("Crear Centro: $resultado");
+
+            return $this->response(0, $resultado);
+
+        } catch (Exception $e) {
+            // Error inesperado
+            $this->log("Error inesperado: " . $e->getMessage());
+            return $this->response(-1, "Error inesperado.");
         }
+    }
 
-        // Ejemplo de lógica de negocio
-        $resultado = "Centro '$nombreCentro' creado exitosamente con ID: $idCentro";
+    //(Pendiente)
+    // Método para verificar existencia del centro
+    private function verificarExistencia($idCentro) {
+        // Aquí iría la lógica para verificar si el centro ya existe (ej. base de datos)
+        // Retorna true si existe, false si no existe
+        return false;  // Asumimos que no existe para este ejemplo
+    }
 
-        // Registrar en el log
-        $this->log("Crear Centro: $resultado");
-
-        return ['resultado' => $resultado];
+    // Método para estandarizar respuestas
+    private function response($codigo, $mensaje) {
+        return [
+            'codigo' => $codigo,
+            'mensaje' => $mensaje
+        ];
     }
 
     // Método para registrar logs

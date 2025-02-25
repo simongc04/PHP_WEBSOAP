@@ -1,5 +1,5 @@
 <?php
-require_once 'CentroService.php';
+require_once 'centroService.php';
 
 $options = [
     'uri' => 'http://localhost/soap-moodle-sepe/server/server.php',

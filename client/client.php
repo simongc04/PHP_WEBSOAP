@@ -20,5 +20,6 @@ $request = [
 
 $response = $client->__soapCall('crearCentro', [$request]);
 
-echo "Respuesta: " . $response['resultado'];
+echo "Código: " . $response['codigo'] . "\n";
+echo "Mensaje: " . $response['mensaje'] . "\n";
 ?>

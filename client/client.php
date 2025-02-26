@@ -1,6 +1,6 @@
 <?php
 $options = [
-    'location' => 'http://localhost/soap-moodle-sepe/server/server.php',
+    'location' => 'http://localhost/PHP_WEBSOAP/server/server.php',
     'uri' => 'http://example.com/centro',
     'trace' => true
 ];

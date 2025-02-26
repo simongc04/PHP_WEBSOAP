@@ -6,15 +6,23 @@ class MoodleClient {
     private $apiRest;
     private $token;
 
-    public function __construct() {
-        $this->host = MOODLE_HOST;
-        $this->apiRest = MOODLE_API_REST;
-        $this->token = MOODLE_TOKEN;
+    public function __construct($platform = 'default') {
+        // Soporte para múltiples plataformas Moodle
+        switch ($platform) {
+            case 'pruebaplatform':
+                $this->host = '';
+                $this->apiRest = '';
+                $this->token = '';               
+            default:
+                $this->host = AKACENTER_HOST;
+                $this->apiRest = AKACENTER_API_REST;
+                $this->token = AKACENTER_TOKEN;
+                break;
+                
+        }
     }
 
-    /**
-     * Método genérico para hacer solicitudes a la API REST de Moodle
-     */
+    
     private function callMoodleAPI($function, $params) {
         $params['wstoken'] = $this->token;
         $params['wsfunction'] = $function;
@@ -33,12 +41,14 @@ class MoodleClient {
         if (isset($data['exception'])) {
             return ['codigo' => -1, 'mensaje' => 'Error inesperado: ' . $data['message']];
         }
-        print($data['message']);
+
         return $data;
     }
 
-    
-    public function obtenerUsuarioPorId($userId) {
+    /**
+     * Obtener un usuario por ID en AkaCenter
+     */
+    public function obtenerUsuarioPorIdAkaCenter($userId) {
         $params = [
             'field' => 'id',
             'values[0]' => $userId

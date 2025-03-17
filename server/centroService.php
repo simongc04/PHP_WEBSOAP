@@ -50,7 +50,7 @@ class CentroService {
     }
 
     //(Pendiente)
-    // Método para verificar existencia del centro
+    // Metodo para verificar existencia del centro
     private function verificarExistencia($idCentro) {
         // Aquí iría la lógica para verificar si el centro ya existe (ej. base de datos)
         // Retorna true si existe, false si no existe

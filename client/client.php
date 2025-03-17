@@ -1,14 +1,14 @@
 <?php
 $options = [
     'location' => 'http://localhost/PHP_WEBSOAP/server/server.php',
-    'uri' => 'http://example.com/centro',
+    'uri' => 'http://localhost/PHP_WEBSOAP/server',
     'trace' => true
 ];
 
 $client = new SoapClient('../wsdl/centro.wsdl', $options);
 
 $request = [
-    'TOKEN' => '797ddf121fdbc5bf8f06f2668c24dbea', // Reemplaza con tu token real
+    'TOKEN' => '797ddf121fdbc5bf8f06f2668c24dbea', 
     'ID_CENTRO' => '12345',
     'NOMBRE_CENTRO' => 'Centro Ejemplo',
     'URL_PLATAFORMA' => 'https://moodle.ejemplo.com',
